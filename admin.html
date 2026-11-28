@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Hazel Bites</title>
+  <link rel="stylesheet" href="css/admin.css?v=3" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <button class="hamburger-btn" onclick="toggleSidebar()" title="Toggle Menu">&#9776;</button>
+      <span class="brand-title">Admin Panel</span>
+      <span class="brand-sub">Hazel Bites</span>
+    </div>
+
+    <div class="profile-wrapper">
+      <button class="profile-circle" onclick="toggleProfileMenu()" title="Akun Admin">AD</button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <div style="font-weight: 700; font-size: 14px; margin-bottom: 2px;">Administrator</div>
+        <div class="admin-email" id="loggedAdminEmail">admin@gmail.com</div>
+        <a href="index.html" class="store-link-btn">Lihat Toko</a>
+        <button class="logout-btn" onclick="logoutAdmin()">Keluar (Logout)</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <aside class="sidebar" id="sidebar">
+      <ul class="nav-list">
+        <li class="nav-item active" data-tab="produk" onclick="switchTab('produk')">Manajemen Produk</li>
+        <li class="nav-item" data-tab="pesanan" onclick="switchTab('pesanan')">Kelola Pesanan</li>
+        <li class="nav-item" data-tab="pengguna" onclick="switchTab('pengguna')">Kelola Pengguna</li>
+        <li class="nav-item" data-tab="laporan" onclick="switchTab('laporan')">Laporan Penjualan</li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+
+      <section id="section-produk" class="admin-section">
+        <h1 class="page-title">Manajemen Produk</h1>
+        <div class="toolbar">
+          <input type="text" id="searchProduk" class="search-box" placeholder="Cari nama produk..." oninput="renderProduk()" />
+          <button class="btn-outline" onclick="cycleFilterProduk()" id="btnFilterProduk">Filter</button>
+          <div class="toolbar-spacer"></div>
+          <button class="btn-outline" id="btnTambahProduk" onclick="openProductModal()">Tambah Produk Baru</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Foto Produk</th>
+                <th>Nama Produk</th>
+                <th>Harga</th>
+                <th>Status</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyProduk"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination-row" id="pagProduk"></div>
+      </section>
+
+      <section id="section-pesanan" class="admin-section" style="display: none;">
+        <h1 class="page-title">Kelola Pesanan</h1>
+        <div class="toolbar">
+          <input type="text" id="searchPesanan" class="search-box" placeholder="Cari nama pembeli atau barang..." oninput="renderPesanan()" />
+          <button class="btn-outline" onclick="cycleFilterPesanan()" id="btnFilterPesanan">Filter</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Nama Barang</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Detail</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyPesanan"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination-row" id="pagPesanan"></div>
+      </section>
+
+      <section id="section-pengguna" class="admin-section" style="display: none;">
+        <h1 class="page-title">Kelola Pengguna</h1>
+        <div class="toolbar">
+          <input type="text" id="searchPengguna" class="search-box pill" placeholder="Cari pengguna atau email..." oninput="renderPengguna()" />
+          <button class="btn-outline pill" onclick="cycleFilterPengguna()" id="btnFilterPengguna">Filter</button>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama Pengguna</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Opsi</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyPengguna"></tbody>
+          </table>
+        </div>
+
+        <div class="pagination-row" id="pagPengguna"></div>
+        <div class="table-summary-text" id="penggunaSummary">Menampilkan 1–10 dari 25 pengguna</div>
+      </section>
+
+      <section id="section-laporan" class="admin-section" style="display: none;">
+        <h1 class="page-title">Laporan Penjualan</h1>
+
+        <div class="report-filter-grid">
+          <div class="filter-card">
+            <label for="tglDari">Dari Tanggal</label>
+            <input type="text" id="tglDari" value="01/04/2026" onchange="updatePeriodeLabel()" />
+          </div>
+          <div class="filter-card">
+            <label for="tglSampai">Sampai Tanggal</label>
+            <input type="text" id="tglSampai" value="06/05/2026" onchange="updatePeriodeLabel()" />
+          </div>
+          <div class="filter-card">
+            <label for="cariLaporan">Cari</label>
+            <input type="text" id="cariLaporan" value="pesanan" oninput="renderLaporan()" />
+          </div>
+        </div>
+
+        <div class="report-pills-bar">
+          <div class="pill-group">
+            <button class="period-pill active" onclick="setPeriodPill(this, 'Harian')">Harian</button>
+            <button class="period-pill" onclick="setPeriodPill(this, 'Mingguan')">Mingguan</button>
+            <button class="period-pill" onclick="setPeriodPill(this, 'Bulanan')">Bulanan</button>
+          </div>
+          <div class="pill-group">
+            <button class="period-pill" onclick="exportLaporanCSV()">Export CSV</button>
+            <button class="period-pill" onclick="window.print()">Print</button>
+          </div>
+        </div>
+
+        <div class="period-heading" id="periodeHeading">Ringkasan Periode: 01 Apr 2026 – 06 May 2026</div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-label">Total Pendapatan</div>
+            <div class="kpi-value">Rp 12.450.000</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Total Pesanan</div>
+            <div class="kpi-value">84 Pesanan</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-label">Total Produk Terjual</div>
+            <div class="kpi-value">112 Unit</div>
+          </div>
+        </div>
+
+        <div class="report-table-wrap">
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nama</th>
+                  <th>Nama Barang</th>
+                  <th>Jumlah</th>
+                  <th>Harga</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyLaporan"></tbody>
+              <tfoot>
+                <tr class="table-total-row">
+                  <td colspan="2" style="text-align: center;">TOTAL KESELURUHAN</td>
+                  <td>999+</td>
+                  <td>Rp 12.450.000</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-overlay" id="modalProduk" onclick="handleOverlayClick(event, 'modalProduk')">
+    <div class="modal-box modal-produk-box">
+      <div class="modal-title-red" id="modalProdukTitle">TAMBAH PRODUK</div>
+      <input type="hidden" id="editProdukId" />
+
+      <div class="modal-field inline-field">
+        <label for="inputNamaProduk">Nama Produk:</label>
+        <input type="text" id="inputNamaProduk" class="modal-line-input" placeholder="Masukkan nama produk..." />
+      </div>
+
+      <div class="modal-field inline-field">
+        <label for="inputVarianProduk">Varian:</label>
+        <input type="text" id="inputVarianProduk" class="modal-line-input" placeholder="Contoh: Toples 500gr" />
+      </div>
+
+      <div class="modal-field inline-field">
+        <label for="inputHargaProduk">Harga:</label>
+        <input type="number" id="inputHargaProduk" class="modal-line-input" placeholder="125000" />
+      </div>
+
+      <div class="modal-field">
+        <label>Status Ketersediaan:</label>
+        <div class="radio-row">
+          <label class="radio-label">
+            <input type="radio" name="statusProduk" value="Ready Stock" checked /> Ready Stock
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="statusProduk" value="Pre Order" /> Pre Order
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-field">
+        <label>Foto Produk:</label>
+        <div class="file-upload-row">
+          <label class="file-btn" for="inputFotoProduk">Pilih File</label>
+          <input type="file" id="inputFotoProduk" accept="image/*" style="display: none;" onchange="previewUploadedFoto(event)" />
+          <span id="fotoFileName" class="file-name-label"></span>
+        </div>
+      </div>
+
+      <div class="modal-field">
+        <label for="inputDeskripsiProduk">Deskripsi Produk</label>
+        <input type="text" id="inputDeskripsiProduk" class="modal-text-input desc-box" placeholder="Tulis deskripsi singkat produk..." />
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn-modal-cancel" onclick="closeModal('modalProduk')">Batal</button>
+        <button type="button" class="btn-modal-submit" id="btnSubmitProduk" onclick="saveProduk()">Tambahkan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalDetailPesanan" onclick="handleOverlayClick(event, 'modalDetailPesanan')">
+    <div class="modal-box wide">
+      <div class="order-modal-header">
+        <div style="font-size: 16px; font-weight: 600;">Kelola Pesanan <span id="detailKode">#KC-88219</span></div>
+        <div style="display: flex; align-items: center; gap: 14px;">
+          <span class="order-badge" id="detailStatusBadge">Diproses</span>
+          <button class="close-x" onclick="closeModal('modalDetailPesanan')">&times;</button>
+        </div>
+      </div>
+
+      <div class="order-info-grid">
+        <div>
+          <h4>Data Pelanggan</h4>
+          <p>Nama: <span id="detailNama">Gustave</span></p>
+          <p>WhatsApp: <span id="detailWa">085294589849</span></p>
+          <p>Tgl: <span id="detailTgl">10 Februari 2026, 15:40 WIB</span></p>
+        </div>
+        <div>
+          <h4>Pengiriman</h4>
+          <p>Metode: <span id="detailKurir">J&amp;T Reguler</span></p>
+          <p>Alamat: <span id="detailAlamat">Jl. Tanimbar No.14 Kel. Kasin Kec. Klojen Kota Malang</span></p>
+          <p id="detailResiRow" style="display:none; font-weight:600; color: var(--accent);">No. Resi: <span id="detailResiVal"></span></p>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-size: 16px;">Rincian Produk</h4>
+        <div class="order-product-row">
+          <div class="order-product-left">
+            <img id="detailImg" src="images/kastangel-keju.jpg" class="product-thumb" alt="Produk" />
+            <span id="detailBarang" style="font-weight: 500;">Kastangel</span>
+          </div>
+          <span id="detailQty">1X</span>
+          <span id="detailHargaSatuan">Rp. 50.000</span>
+          <span id="detailSubtotal">Rp. 50.000</span>
+        </div>
+
+        <div style="font-weight: 600; font-size: 14px; margin-bottom: 6px;">Ringkasan Pembayaran</div>
+        <div class="payment-row">
+          <span>Subtotal Produk:</span>
+          <span id="paySubtotal">Rp. 50.000</span>
+        </div>
+        <div class="payment-row">
+          <span>Ongkir:</span>
+          <span>Rp. 10.000</span>
+        </div>
+        <div class="payment-total">
+          <span>Total:</span>
+          <span id="payTotal">Rp. 60.000</span>
+        </div>
+        <div style="font-size: 14.5px; margin-top: 6px;">Status Bayar: Lunas (BCA Transfer)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modalInputResi" onclick="handleResiOverlayClick(event)">
+    <div class="modal-box modal-resi-box">
+      <button type="button" class="close-x modal-resi-close" onclick="cancelResiModal()" title="Tutup">&times;</button>
+      <p class="modal-resi-msg">
+        Sebelum mengubah status menjadi dikirim harap masukan resi terlebih dahulu
+      </p>
+      <div class="modal-field">
+        <label for="inputNomorResi" class="modal-resi-label">Masukkan Resi:</label>
+        <input type="text" id="inputNomorResi" class="modal-resi-input" placeholder="Contoh: JP8829104421" />
+      </div>
+      <div class="modal-resi-actions">
+        <button type="button" class="btn-modal-submit btn-resi-kirim" onclick="confirmKirimResi()">Kirim</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/admin.js?v=6"></script>
+</body>
+</html>

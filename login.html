@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login - Hazel Bites</title>
+  <meta name="description" content="Masuk ke akun Hazel Bites untuk memesan kue kering homemade favoritmu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-body">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-cookie" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></symbol></svg>
+
+  <main class="auth-page">
+    <a class="auth-logo" href="index.html" aria-label="Kembali ke Beranda Hazel Bites">
+      <span class="auth-logo-icon"><svg class="icon" aria-hidden="true"><use href="#i-cookie"/></svg></span>
+      <span class="auth-logo-text">Hazel Bites</span>
+    </a>
+
+    <div class="auth-grid">
+      <div class="auth-media">
+        <div class="auth-card-img">
+          <img src="images/auth-cookies.jpg" alt="Aneka kue kering homemade Hazel Bites" class="auth-slide active">
+          <img src="images/photo.jpeg" alt="Cookies Cokelat Hazel Bites" class="auth-slide">
+          <img src="images/photo1.jpeg" alt="Nastar Keju Hazel Bites" class="auth-slide">
+          <img src="images/photo2.jpeg" alt="Kastangel Keju Hazel Bites" class="auth-slide">
+          <img src="images/photo3.jpeg" alt="Kurma Kacang Hazel Bites" class="auth-slide">
+          <div class="auth-slide-dots" aria-label="Navigasi gambar">
+            <button type="button" class="dot active" data-index="0" aria-label="Gambar 1"></button>
+            <button type="button" class="dot" data-index="1" aria-label="Gambar 2"></button>
+            <button type="button" class="dot" data-index="2" aria-label="Gambar 3"></button>
+            <button type="button" class="dot" data-index="3" aria-label="Gambar 4"></button>
+            <button type="button" class="dot" data-index="4" aria-label="Gambar 5"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-divider" aria-hidden="true"></div>
+
+      <div class="auth-form-wrap">
+        <h1 class="auth-title">LOGIN</h1>
+
+        <form class="auth-form" data-auth-form="login" novalidate>
+          <div class="auth-field">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="email" placeholder="nama@gmail.com" autocomplete="email" required>
+          </div>
+
+          <div class="auth-field">
+            <label for="login-password">Password</label>
+            <div class="auth-pass">
+              <input type="password" id="login-password" name="password" placeholder="••••••••" autocomplete="current-password" required>
+              <button type="button" class="auth-toggle-pass" data-toggle-pass aria-label="Tampilkan password">Lihat</button>
+            </div>
+          </div>
+
+          <button type="submit" class="auth-submit">MASUK</button>
+        </form>
+
+        <p class="auth-switch">Belum Punya Akun? <a href="register.html">Daftar</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script src="js/core.js?v=6"></script>
+  <script src="js/auth.js?v=6"></script>
+</body>
+</html>

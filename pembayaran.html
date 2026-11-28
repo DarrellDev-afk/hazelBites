@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pembayaran - Hazel Bites</title>
+  <meta name="description" content="Selesaikan pembayaran pesanan kue kering homemade Hazel Bites melalui Virtual Account, E-Wallet, atau QRIS.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-user">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-truck" viewBox="0 0 24 24"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol><symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".6" fill="currentColor"/></symbol><symbol id="i-cart" viewBox="0 0 24 24"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path fill="currentColor" d="M11.562 3.266a.5.5 0 0 1 .876 0L15.39 8.87a1 1 0 0 0 1.516.294L21.183 5.5a.5.5 0 0 1 .798.519l-2.834 10.246a1 1 0 0 1-.956.734H5.81a1 1 0 0 1-.957-.734L2.02 6.02a.5.5 0 0 1 .798-.519l4.276 3.664a1 1 0 0 0 1.516-.294z"/><path d="M5.21 20h13.58"/><path stroke="#D5C5AE" d="m12 8.5.9 1.9 2.1.3-1.5 1.5.35 2.1-1.85-1-1.85 1 .35-2.1L9 10.7l2.1-.3z" fill="#D5C5AE"/></symbol><symbol id="i-sprout" viewBox="0 0 24 24"><path fill="currentColor" d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/><path d="M20 15v3M18.5 16.5h3" stroke-width="1.4"/></symbol><symbol id="i-heart-home" viewBox="0 0 24 24"><path fill="currentColor" d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path stroke="#D5C5AE" d="m8.5 12 3.5-3.2 3.5 3.2M9.5 11.5v3.2h5v-3.2"/></symbol><symbol id="i-arrow-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m10 8 4 4-4 4"/></symbol><symbol id="i-phone" viewBox="0 0 24 24"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/><path d="M14.05 2a9 9 0 0 1 8 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol><symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol><symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></symbol><symbol id="i-facebook" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M14 22v-8.5h2.8l.5-3.5H14V7.8c0-1 .4-1.8 1.8-1.8h1.6V3.1C17 3 16 3 15 3c-2.6 0-4.4 1.6-4.4 4.4V10H7.7v3.5h2.9V22z"/></symbol><symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol><symbol id="i-cookie" viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></symbol></svg>
+
+  <header class="site-header site-header--user" id="top">
+    <a class="logo" href="homepage.html" aria-label="Hazel Bites">
+      <span class="logo-icon"><svg class="icon" aria-hidden="true"><use href="#i-cookie"/></svg></span><span class="logo-text">Hazel Bites</span>
+    </a>
+    <form class="search" role="search" data-search-form>
+      <input type="search" id="search" placeholder="Cari..." aria-label="Cari produk" autocomplete="off">
+    </form>
+    <button class="nav-toggle" aria-label="Buka menu" aria-expanded="false" data-nav-toggle><span></span><span></span><span></span></button>
+    <nav class="nav" data-nav>
+      <a href="homepage.html#beranda">Beranda</a>
+      <a href="katalog.html">Produk</a>
+      <a href="homepage.html#tentang">Tentang</a>
+    </nav>
+    <a class="cart" href="keranjang.html" aria-label="Keranjang" data-cart><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span class="cart-count" data-cart-count hidden>0</span></a>
+    <button class="avatar" aria-label="Menu akun" aria-haspopup="true" aria-expanded="false" data-avatar>
+      <img src="images/avatar.jpg" alt="Foto profil">
+    </button>
+    <div class="dropdown" data-dropdown hidden>
+      <a href="edit-profile.html">Profil <svg class="icon" aria-hidden="true"><use href="#i-arrow-circle"/></svg></a>
+      <a href="riwayat.html">Riwayat Pesanan <svg class="icon" aria-hidden="true"><use href="#i-arrow-circle"/></svg></a>
+    </div>
+  </header>
+
+  <main class="payment-page" data-payment-page>
+    <a class="back" href="checkout.html" data-back><svg class="back-icon" aria-hidden="true"><use href="#i-chevron-left"/></svg><span>KEMBALI</span></a>
+
+    <div class="payment-grid">
+
+      <div class="payment-left">
+        <h1 class="pay-label">Pilih metode pembayaran</h1>
+        <div class="pay-methods" role="tablist" aria-label="Metode Pembayaran">
+          <button type="button" class="pay-method is-active" role="tab" aria-selected="true" data-pay-method="va">Virtual<br>Account</button>
+          <button type="button" class="pay-method" role="tab" aria-selected="false" data-pay-method="ewallet">E-Wallet</button>
+          <button type="button" class="pay-method" role="tab" aria-selected="false" data-pay-method="qris">Qris</button>
+        </div>
+
+        <section class="pay-panel" data-pay-panel="va">
+          <h2 class="pay-label">Pilih Bank Virtual Account</h2>
+          <div class="pay-option-group" role="radiogroup" aria-label="Pilih Bank Virtual Account">
+            <label class="pay-option is-selected">
+              <input type="radio" name="va_bank" value="BCA" data-va-number="8808 1234 5678" checked>
+              <span class="pay-radio" aria-hidden="true"></span>
+              <span class="pay-brand-badge pay-brand-badge--va" aria-hidden="true">
+                <img src="images/logo-bca.png" alt="Logo BCA">
+              </span>
+              <span class="pay-option-name">Bank BCA</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="va_bank" value="Mandiri" data-va-number="8902 9876 5432">
+              <span class="pay-radio" aria-hidden="true"></span>
+              <span class="pay-brand-badge pay-brand-badge--va" aria-hidden="true">
+                <img src="images/logo-mandiri.png" alt="Logo Mandiri">
+              </span>
+              <span class="pay-option-name">Bank Mandiri</span>
+            </label>
+          </div>
+
+          <div class="pay-box va-box">
+            <span class="va-caption">Nomor Virtual Account</span>
+            <div class="va-row">
+              <strong class="va-number" data-va-display>8808 1234 5678</strong>
+              <button type="button" class="btn-copy-va" data-copy-va>Salin</button>
+            </div>
+          </div>
+
+          <div class="pay-guide">
+            <h3>Panduan Virtual Account:</h3>
+            <ol>
+              <li>Buka aplikasi <em>m-banking</em> atau <em>internet banking</em> Anda.</li>
+              <li>Pilih menu <strong>Transfer &gt; Virtual Account</strong>.</li>
+              <li>Masukkan nomor virtual account di atas, lalu cek nama penerima (<strong>Hazel Bites</strong>).</li>
+              <li>Konfirmasi nominal pembayaran dan selesaikan transaksi sebelum batas waktu habis.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="pay-panel" data-pay-panel="ewallet" hidden>
+          <h2 class="pay-label">Pilih Aplikasi E-Wallet</h2>
+          <div class="pay-option-group" role="radiogroup" aria-label="Pilih Aplikasi E-Wallet">
+            <label class="pay-option is-selected">
+              <input type="radio" name="ewallet_app" value="DANA" checked>
+              <span class="pay-radio" aria-hidden="true"></span>
+              <span class="pay-brand-badge pay-brand-badge--ewallet" aria-hidden="true">
+                <img src="images/logo-dana.png" alt="Logo DANA">
+              </span>
+              <span class="pay-option-name">DANA</span>
+            </label>
+            <label class="pay-option">
+              <input type="radio" name="ewallet_app" value="GoPay">
+              <span class="pay-radio" aria-hidden="true"></span>
+              <span class="pay-brand-badge pay-brand-badge--ewallet" aria-hidden="true">
+                <img src="images/logo-gopay.png" alt="Logo GoPay">
+              </span>
+              <span class="pay-option-name">GoPay</span>
+            </label>
+          </div>
+
+          <div class="pay-box ewallet-box">
+            <label class="ewallet-label" for="ewallet-phone">Masukkan Nomor Telepon</label>
+            <input type="tel" id="ewallet-phone" class="ewallet-input" placeholder="Masukkan Teks..." autocomplete="tel" data-ewallet-phone>
+          </div>
+
+          <div class="pay-guide">
+            <h3>Panduan E-Wallet:</h3>
+            <ol>
+              <li>Pilih jenis e-wallet yang ingin Anda gunakan (misalnya GoPay, OVO, DANA, atau ShopeePay).</li>
+              <li>Masukkan nomor ponsel atau detail akun e-wallet Anda yang terdaftar.</li>
+              <li>Buka aplikasi e-wallet Anda dan setujui permintaan tagihan atas nama <strong>Hazel Bites</strong>.</li>
+              <li>Masukkan PIN Anda dan pastikan pembayaran berhasil sebelum batas waktu habis.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section class="pay-panel" data-pay-panel="qris" hidden>
+          <h2 class="pay-label">Scan QR Code Untuk Membayar</h2>
+          <div class="qris-wrap">
+            <div class="qris-code" data-qris-box aria-label="Kode QR Pembayaran Hazel Bites"></div>
+            <button type="button" class="btn-download-qr" data-download-qr>Download QR</button>
+          </div>
+
+          <div class="pay-guide">
+            <h3>Panduan QRIS:</h3>
+            <ol>
+              <li>Pastikan nominal tagihan sudah sesuai sebelum melakukan pemindaian.</li>
+              <li>Buka aplikasi <em>m-banking</em> atau <em>e-wallet</em> yang mendukung pembayaran <strong>QRIS</strong>.</li>
+              <li>Pindai (<em>scan</em>) kode QR yang tampil di layar atau unduh kode QR untuk dibayar lewat galeri.</li>
+              <li>Periksa nama merchant (<strong>Hazel Bites</strong>) dan total pembayaran, lalu masukkan PIN untuk menyelesaikan transaksi.</li>
+            </ol>
+          </div>
+        </section>
+
+        <button type="button" class="btn-confirm-pay" data-confirm-pay>KONFIRMASI PEMBAYARAN</button>
+        <button type="button" class="btn-fail-pay" data-fail-pay>SIMULASI PEMBAYARAN GAGAL</button>
+      </div>
+
+      <div class="payment-right">
+        <div class="pay-box timer-box">
+          <span>Selesaikan Sebelum</span>
+          <span class="timer-pill" data-pay-timer>23:59:12</span>
+        </div>
+
+        <section class="pay-box pay-order-box" aria-labelledby="pay-order-heading">
+          <div class="pay-order-head">
+            <h2 id="pay-order-heading">Item pesanan | <span data-pay-order-id>#ORD-0234</span></h2>
+          </div>
+          <div class="pay-order-list" data-pay-items>
+            <div class="pay-order-item">
+              <img src="images/kue-mpit.jpg" alt="Kue Mpit">
+              <div class="pay-order-info">
+                <h3>Kue Mpit</h3>
+                <p>1x Toples 300g</p>
+              </div>
+              <span class="pay-order-price">Rp 125.000</span>
+            </div>
+            <div class="pay-order-item">
+              <img src="images/kue-kacang-cokelat.jpg" alt="Kue Kacang Cokelat">
+              <div class="pay-order-info">
+                <h3>Kue Kacang Cokelat</h3>
+                <p>1x Toples 300g</p>
+              </div>
+              <span class="pay-order-price">Rp 125.000</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="pay-box pay-summary-box" aria-label="Rincian biaya">
+          <h2 class="pay-summary-title">Rincian biaya</h2>
+          <div class="pay-summary-row">
+            <span>Subtotal produk</span>
+            <span data-pay-subtotal>Rp 250.000</span>
+          </div>
+          <div class="pay-summary-row">
+            <span>Biaya admin/platform</span>
+            <span data-pay-admin>Rp 1.000</span>
+          </div>
+          <div class="pay-summary-row">
+            <span>Ongkir</span>
+            <span data-pay-shipping>Rp 10.000</span>
+          </div>
+          <div class="pay-summary-row" data-pay-discount-row hidden>
+            <span>Diskon voucher</span>
+            <span data-pay-discount>Rp -0</span>
+          </div>
+          <hr class="pay-summary-divider">
+          <div class="pay-summary-row pay-summary-row--total">
+            <span>Total bayar</span>
+            <span data-pay-total>Rp 261.000</span>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <p class="footer-logo">Hazel Bites</p>
+          <p class="footer-tagline">Kue kering buatan rumah dari bahan<br>premium tanpa pengawet</p>
+          <p class="footer-contact"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Hubungi Kami +62 812-3456-7890</p>
+          <p class="footer-contact"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email Kami : hazelbites@gmail.com</p>
+          <div class="social">
+            <a href="#" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a>
+            <a href="#" aria-label="TikTok"><svg class="icon" aria-hidden="true"><use href="#i-tiktok"/></svg></a>
+            <a href="#" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col"><h4>Layanan Pelanggan</h4><a href="#">Cara Pemesanan</a><a href="#">Konfirmasi Pembayaran</a><a href="#">Cek Status Pesanan</a></div>
+        <div class="footer-col"><h4>Informasi</h4><a href="homepage.html#tentang">Tentang Kami</a><a href="#">Kebijakan Privasi</a><a href="#">Syarat &amp; Ketentuan</a><a href="#">FAQ/Bantuan</a></div>
+        <div class="footer-col"><h4>Platform</h4><a href="#">Web</a><a href="#">Mobile</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Hazel Bites All Rights Reversed. Created by Darrel Syadid Yasma &amp; Anya Anindya Mandiri Jamil (X RPL A)</p>
+        <p class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Teams of Service</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+  <script src="js/products.js?v=6"></script>
+  <script src="js/core.js?v=6"></script>
+  <script src="js/payment.js?v=6"></script>
+  <script src="js/ui.js?v=6"></script>
+</body>
+</html>
